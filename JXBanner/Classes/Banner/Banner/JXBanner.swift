@@ -85,6 +85,12 @@ public class JXBanner: JXBaseBanner, JXBannerType {
         // Start Animation
         start()
     }
+    
+    public var _collectionView: UICollectionView {
+        get {
+            return collectionView
+        }
+    }
 }
 
 // MARK: - Private mothod
