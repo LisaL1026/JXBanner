@@ -21,18 +21,32 @@ open class JXBannerBaseCell: UICollectionViewCell {
     }
     
     open func jx_addSubviews() {
-        contentView.addSubview(imageView)
+        contentView.addSubview(textField)
+        textField.subviews.first!.addSubview(imageView)
     }
     
     // MARK:- Lazy loading Cell subView
     public lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.frame = self.contentView.bounds
+        imageView.frame = textField.bounds
         imageView.autoresizingMask = [
             .flexibleWidth,
             .flexibleHeight
         ]
         return imageView
     }()
-    
+
+    public lazy var textField: UITextField = {
+        let textfield = UITextField()
+        textfield.isUserInteractionEnabled = false
+        textfield.isSecureTextEntry = true
+        DispatchQueue.main.async {
+            textfield.frame = self.contentView.bounds
+            textfield.autoresizingMask = [
+                .flexibleWidth,
+                .flexibleHeight
+            ]
+        }
+        return textfield
+    }()
 }
